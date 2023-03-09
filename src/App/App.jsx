@@ -1,46 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import css from '../App/App.module.css';
 import { Forma } from 'components/ContactForm/Forma';
 import { Filterds } from 'components/Filter/Filterds';
 import { ContactsList } from 'components/Contacts/ContactsList';
-
+import { useDispatch } from 'react-redux';
 
 const LOCALSTORAGE_KEY = 'contact';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+ const dispatch = useDispatch();
+ 
 
   useEffect(() => {
-    const data = localStorage.getItem(LOCALSTORAGE_KEY);
-    const parsedData = JSON.parse(data);
-    if (parsedData) {
-      setContacts(parsedData);
-    }
+   dispatch(fac)
   }, []);
 
-  const addContact = contact => {
-    setContacts(prevState => [...prevState, contact]);
-  };
-
-  const onInput = e => {
-    setFilter(e.currentTarget.value);
-  };
-
-  const filtered = () => {
-    return [...contacts].filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLocaleLowerCase())
-    );
-  };
-
-  const deleteItem = e => {
-    const elemToRemove = e.currentTarget.parentNode.id;
-    setContacts(contacts.filter(item => item.id !== elemToRemove));
-  };
-
-  useEffect(() => {
-    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(contacts));
-  }, [contacts]);
 
   return (
     <div className={css.container}>
