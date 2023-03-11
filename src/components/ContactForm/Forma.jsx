@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
-import { addContact } from 'Redux/phonebook/phonebookSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'Redux/phonebook/phonebookOperation';
+import { getStoreContacts } from 'Redux/phonebook/phonebookSlice';
 import css from '../ContactForm/Forma.module.css';
 
 export const Forma = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [id, setId] = useState('');
   const dispatch = useDispatch();
+  const contactStore = useSelector(getStoreContacts);
 
   const handleChange = e => {
     const nameEvent = e.target.name;
@@ -23,18 +23,23 @@ export const Forma = () => {
       default:
         return;
     }
-    setId(nanoid());
   };
 
   const resetForm = () => {
     setName('');
     setNumber('');
-    setId('');
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addContact({ id, name, number }));
+    const contactIs = contactStore
+      .map(cont => cont.name.includes(name))
+      .includes(true);
+    if (!contactIs) {
+      dispatch(addContact({ name, number }));
+    } else {
+      alert(`${name} is already in contacts`);
+    }
     resetForm();
   };
 
