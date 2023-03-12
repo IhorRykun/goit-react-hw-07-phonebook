@@ -29,7 +29,7 @@ export async function addContacts(name, phone) {
 export async function deleteContacts(id) {
   try {
     await axios.delete(
-      `https://638e4e0d4190defdb75bee2f.mockapi.io/contacts/${id}`
+      `https://6409e3796ecd4f9e18be6db1.mockapi.io/contacts/${id}`
     );
     return;
   } catch (error) {
