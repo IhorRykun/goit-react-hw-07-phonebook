@@ -27,7 +27,7 @@ const phonebookSlice = createSlice({
   },
   extraReducers: {
     [fetchContacts.pending]: handlePending,
-    [fetchContacts.fulfilter](state, action) {
+    [fetchContacts.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
       state.contacts.items = action.payload;
@@ -35,7 +35,7 @@ const phonebookSlice = createSlice({
     [fetchContacts.rejected]: handleRejected,
 
     [addContact.pending]: handlePending,
-    [addContact.fulfilter](state, action) {
+    [addContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
       state.contacts.items.push(action.payload.data);
@@ -43,7 +43,7 @@ const phonebookSlice = createSlice({
     [addContact.rejected]: handleRejected,
 
     [deleteContact.pending]: handlePending,
-    [deleteContact.fulfilter](state, action) {
+    [deleteContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
       state.contacts.items = state.contacts.items.filter(

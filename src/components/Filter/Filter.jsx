@@ -5,7 +5,7 @@ import { isFilter } from 'Redux/phonebook/phonebookSlice';
 
 
 
-export const Filterds = () => {
+export const Filter = () => {
   const dispatch = useDispatch();
 
   return (
@@ -20,6 +20,6 @@ export const Filterds = () => {
   );
 };
 
-Filterds.propTypes = {
+Filter.propTypes = {
   onInput: PropTypes.func,
 };

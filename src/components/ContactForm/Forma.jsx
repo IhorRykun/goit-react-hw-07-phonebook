@@ -8,7 +8,7 @@ export const Forma = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const contactStore = useSelector(getStoreContacts);
+  const contactsStore = useSelector(getStoreContacts);
 
   const handleChange = e => {
     const nameEvent = e.target.name;
@@ -32,7 +32,7 @@ export const Forma = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const contactIs = contactStore
+    const contactIs = contactsStore
       .map(cont => cont.name.includes(name))
       .includes(true);
     if (!contactIs) {

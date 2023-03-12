@@ -36,7 +36,8 @@ export const ContactsList = () => {
         {rendered.map(cont => (
           <li className={css.item} key={cont.id}>
             <span>{cont.name}: </span>
-            <span>{cont.number}</span>
+          <span>{cont.number}</span>
+          {/* <img src={cont.avatar} alt="" /> */}
             <button
               type="submit"
               className={css.button__del}
