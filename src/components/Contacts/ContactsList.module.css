@@ -30,3 +30,11 @@
 .number {
   margin-right: 10px;
 }
+
+.avatar__img {
+  width: 54px;
+  display: block;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-right: 14px;
+}
