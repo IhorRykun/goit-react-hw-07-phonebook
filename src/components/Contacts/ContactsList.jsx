@@ -42,12 +42,12 @@ export const ContactsList = () => {
       <ul className={css.list}>
         {rendered.map(cont => (
           <li className={css.item} key={cont.id}>
-            {/* <img
+            <img
               className={css.avatar__img}
               src={cont.avatar}
               alt={cont.name}
               width="32px"
-            /> */}
+            />
             <span>{cont.name}: </span>
             <span>{cont.number}</span>
             <button
